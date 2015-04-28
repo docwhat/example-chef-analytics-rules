@@ -1,0 +1,14 @@
+// Catch cookbook changes not made by the 'pipeline' user 
+rules 'catch cookbook changes'
+  with priority=50
+  rule on action
+  when
+    parent_type = 'cookbook'
+      and
+    requestor_name != 'pipeline'
+  then
+    // Not passing a second parameter(notification string)
+    // in order to send the default json CONTENT
+    notify('httpnotif')
+  end
+end

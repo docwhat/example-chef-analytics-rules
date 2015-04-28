@@ -4,9 +4,9 @@ rules 'catch deletes and updates'
   with priority=100
   rule on action
   when
-    (entity_type = "bag" or entity_type = "item")
+    (entity_type = 'bag' or entity_type = 'item')
       and
-    (task = "delete" or task = "update")
+    (task = 'delete' or task = 'update')
   then
     // Not passing a second parameter(notification string)
     // in order to send the default json CONTENT
