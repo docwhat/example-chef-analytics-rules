@@ -1,2 +1,1 @@
-# example-chef-analytics-rules
-My Chef Analytics Example Rules
+Chef Analytics example rules repo, feel free to contribute ;)
