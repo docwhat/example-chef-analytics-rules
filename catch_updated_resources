@@ -1,0 +1,19 @@
+// Catch when resources are executed to bring the node in the desired state
+rules "Catch node updated resources"
+  rule on run_converge
+  when 
+    total_resource_count > 1 and
+    updated_resource_count > 0
+  then
+    alert:warn("Chef converge required {{message.updated_resource_count}}/{{message.total_resource_count}} resources to be updated!")
+    notify('httpnotif')
+    notify('slacknotif', '{
+      "username": "Chef Analytics Notifications",
+      "icon_emoji": ":warning:",
+      "attachments": [ {
+        "text": "Chef converge required {{message.updated_resource_count}}/{{message.total_resource_count}} resources to be updated on node `{{message.node_name}}` in organization `{{message.organization_name}}`",
+        "color": "danger"
+      }]
+    }')
+  end
+end
