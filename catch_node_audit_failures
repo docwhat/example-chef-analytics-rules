@@ -10,7 +10,7 @@ rules 'failed-audit'
         "username": "Chef Analytics Notifications",
         "icon_emoji": ":failed:",
         "attachments": [ {
-          "text": "{{message.name}} (cookbook {{message.cookbook_name}}) had `{{message.number_failed}}` failed audit test(s) on node `{{message.node_name}}` in organization `{{message.organization_name}}`",
+          "text": "{{message.name}} (cookbook {{message.cookbook_name}}) had `{{message.number_failed}}` failed audit test(s) on node `{{message.run.node_name}}` in organization `{{message.organization_name}}`",
           "color": "danger"
       }]
     }')
