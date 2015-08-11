@@ -11,5 +11,6 @@ rules 'catch deletes and updates'
     // Not passing a second parameter(notification string)
     // in order to send the default json CONTENT
     notify('httpnotif')
+    notify('httpnotif', 'Chef data_bag changed with remote_request_id={{message.remote_request_id}}')
   end
 end
