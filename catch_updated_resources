@@ -6,7 +6,16 @@ rules "Catch node updated resources"
     updated_resource_count > 0
   then
     alert:warn("Chef converge required {{message.updated_resource_count}}/{{message.total_resource_count}} resources to be updated!")
+    // Send entire message as json
     notify('httpnotif')
+
+    // Send minimal custom json
+    notify('httpnotif', '{ 
+      "description":"Chef converge required resources to be updated!",
+      "updated_resources":"{{message.updated_resource_count}}/{{message.total_resource_count}}"
+    }')
+
+    // Send Slack notification
     notify('slacknotif', '{
       "username": "Chef Analytics Notifications",
       "icon_emoji": ":warning:",

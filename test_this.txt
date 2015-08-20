@@ -1,4 +1,0 @@
-noop()
-
-
-{{ message.remote_request_id }}
